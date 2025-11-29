@@ -19,11 +19,12 @@ UniTransportation is a ride-sharing mobile application that enables students to 
 
 ## 👥 Team Members
 - Lama Almutairi – Booking Flow + Navigation  
-- Khlood – UI + Components  
+- Arwa – UI + Components  
 - Hoor – Authentication + User Profile  
 - Manar – Database + Collections  
 - Raneem – Filters + Search  
-- Layan – Driver Dashboard  
+- Layan – Driver Dashboard
+  
 
 ## ✔️ Version Control Usage
 All team members contributed through:
