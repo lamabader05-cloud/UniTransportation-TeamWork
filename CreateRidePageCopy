@@ -1,0 +1,802 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_calendar.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'create_ride_page_copy_model.dart';
+export 'create_ride_page_copy_model.dart';
+
+class CreateRidePageCopyWidget extends StatefulWidget {
+  const CreateRidePageCopyWidget({super.key});
+
+  static String routeName = 'CreateRidePageCopy';
+  static String routePath = '/createRidePageCopy';
+
+  @override
+  State<CreateRidePageCopyWidget> createState() =>
+      _CreateRidePageCopyWidgetState();
+}
+
+class _CreateRidePageCopyWidgetState extends State<CreateRidePageCopyWidget> {
+  late CreateRidePageCopyModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => CreateRidePageCopyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          leading: FFButtonWidget(
+            onPressed: () async {
+              context.safePop();
+            },
+            text: FFLocalizations.of(context).getText(
+              'l754c7tq' /* ← */,
+            ),
+            options: FFButtonOptions(
+              height: 40,
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              color: FlutterFlowTheme.of(context).primary,
+              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                    font: GoogleFonts.inter(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                    ),
+                    color: Colors.white,
+                    letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                  ),
+              elevation: 0,
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                FFLocalizations.of(context).getText(
+                  '2ecba9ms' /* Create New Ride */,
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      fontSize: 30,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                    ),
+              ),
+            ],
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 2,
+        ),
+        body: SafeArea(
+          top: true,
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              safeSetState(() {});
+
+              await RidesRecord.collection.doc().set(createRidesRecordData(
+                    driver: FFAppState().email,
+                  ));
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  FFLocalizations.of(context).getText(
+                    'osaefq1a' /* CREATE YOUR RIDE */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                        fontSize: 30,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FlutterFlowDropDown<String>(
+                          controller: _model.dropDownpickValueController ??=
+                              FormFieldController<String>(null),
+                          options: [
+                            FFLocalizations.of(context).getText(
+                              'kggcbdxw' /* GATE 1 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'frnivxyr' /* GATE 2 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '6w39j2pq' /* GATE 3 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'r3ksjtrj' /* GATE 4 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'zrd1y2fo' /* GATE 5 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '3tnpu60d' /* GATE 6 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'hltk9q98' /* GATE 7 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'wmsf9l76' /* GATE 8 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'aqjgos90' /* LIBRARY */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '3o00cnyi' /* CLINIC */,
+                            )
+                          ],
+                          onChanged: (val) => safeSetState(
+                              () => _model.dropDownpickValue = val),
+                          width: 200,
+                          height: 40,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          hintText: FFLocalizations.of(context).getText(
+                            'x6r7csqg' /* Start Location */,
+                          ),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).customColor9,
+                            size: 24,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2,
+                          borderColor: FlutterFlowTheme.of(context).secondary,
+                          borderWidth: 0,
+                          borderRadius: 10,
+                          margin: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                          hidesUnderline: true,
+                          isOverButton: false,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        ),
+                        FlutterFlowDropDown<String>(
+                          controller: _model.dropDowndropValueController ??=
+                              FormFieldController<String>(null),
+                          options: [
+                            FFLocalizations.of(context).getText(
+                              '5kvd8yzu' /* GATE 1 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'bvo4ybu1' /* GATE 2 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'xy8ubv3b' /* GATE 3 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'r3ksjtrj' /* GATE 4 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'zrd1y2fo' /* GATE 5 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '3tnpu60d' /* GATE 6 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'hltk9q98' /* GATE 7 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'wmsf9l76' /* GATE 8 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'aqjgos90' /* LIBRARY */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'blnf3a9i' /* CLINIC */,
+                            )
+                          ],
+                          onChanged: (val) => safeSetState(
+                              () => _model.dropDowndropValue = val),
+                          width: 200,
+                          height: 40,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          hintText: FFLocalizations.of(context).getText(
+                            'y6vhj2y0' /* End Location */,
+                          ),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2,
+                          borderColor: FlutterFlowTheme.of(context).secondary,
+                          borderWidth: 0,
+                          borderRadius: 10,
+                          margin: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                          hidesUnderline: true,
+                          isOverButton: false,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FlutterFlowDropDown<String>(
+                          controller: _model.dropDownstimeValueController ??=
+                              FormFieldController<String>(null),
+                          options: [
+                            FFLocalizations.of(context).getText(
+                              'u2jop0bu' /* 0 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'b97mpxth' /* 1 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'qif0g7j5' /* 2 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'wsq2xc26' /* 3 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'gef2f0cj' /* 4 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '4fkov417' /* 5 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'ed2ar1ek' /* 6 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'oia26dn4' /* 7 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'b7fsdx8f' /* 8 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'rpfw5dxz' /* 9 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'i8dsv7v1' /* 10 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '5bvg7jjt' /* 11 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '00bu797h' /* 12 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'g6vjtpij' /* 13 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '5oegex58' /* 14 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'lv9gv9e4' /* 15 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '0zbqb0lk' /* 16 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'tn6gqcwb' /* 17 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'k7madcv9' /* 18 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'y10fsv1a' /* 19 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'jec56xkj' /* 20 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '0xd1407v' /* 21 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '2b5012fj' /* 22 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'xt6jzbef' /* 23 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'spsp11s8' /* 24 */,
+                            )
+                          ],
+                          onChanged: (val) => safeSetState(
+                              () => _model.dropDownstimeValue = val),
+                          width: 150,
+                          height: 40,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          hintText: FFLocalizations.of(context).getText(
+                            'mrinwyqt' /* Start Time */,
+                          ),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24,
+                          ),
+                          fillColor: FlutterFlowTheme.of(context).secondary,
+                          elevation: 2,
+                          borderColor: Colors.transparent,
+                          borderWidth: 0,
+                          borderRadius: 12,
+                          margin: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                          hidesUnderline: true,
+                          isOverButton: false,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FlutterFlowDropDown<String>(
+                          controller: _model.dropDownetimeValueController ??=
+                              FormFieldController<String>(null),
+                          options: [
+                            FFLocalizations.of(context).getText(
+                              'jtvc4yy8' /* 0 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'f3fjkm0x' /* 1 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'rmkhhubz' /* 2 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'x49kvavr' /* 3 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '890u1j3e' /* 4 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'jvwf17si' /* 5 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'owap61ev' /* 6 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '4cpr8xie' /* 7 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              's9exu3s8' /* 8 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'w3fzhc2l' /* 9 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'izs1fiwe' /* 10 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'uziy8yiz' /* 11 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '8j74qz5v' /* 12 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'g6vjtpij' /* 13 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '5oegex58' /* 14 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'vqlnyhct' /* 15 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '0zbqb0lk' /* 16 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'tn6gqcwb' /* 17 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'k7madcv9' /* 18 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'y10fsv1a' /* 19 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'jec56xkj' /* 20 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '0xd1407v' /* 21 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '2b5012fj' /* 22 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'xt6jzbef' /* 23 */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '4n97impu' /* 24 */,
+                            )
+                          ],
+                          onChanged: (val) => safeSetState(
+                              () => _model.dropDownetimeValue = val),
+                          width: 150,
+                          height: 40,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          hintText: FFLocalizations.of(context).getText(
+                            'w5b4apih' /* End Time */,
+                          ),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24,
+                          ),
+                          fillColor: FlutterFlowTheme.of(context).secondary,
+                          elevation: 2,
+                          borderColor: Colors.transparent,
+                          borderWidth: 0,
+                          borderRadius: 12,
+                          margin: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                          hidesUnderline: true,
+                          isOverButton: false,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        ),
+                      ],
+                    ),
+                  ].divide(SizedBox(width: 40)),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlutterFlowDropDown<String>(
+                      controller: _model.dropDownpriceValueController ??=
+                          FormFieldController<String>(null),
+                      options: [
+                        FFLocalizations.of(context).getText(
+                          'j98tseh2' /* 5 */,
+                        ),
+                        FFLocalizations.of(context).getText(
+                          'f9yk9aln' /* 10 */,
+                        ),
+                        FFLocalizations.of(context).getText(
+                          '68b377me' /* 15 */,
+                        )
+                      ],
+                      onChanged: (val) =>
+                          safeSetState(() => _model.dropDownpriceValue = val),
+                      width: 200,
+                      height: 40,
+                      textStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
+                      hintText: FFLocalizations.of(context).getText(
+                        'xsitpo5s' /* Select Plan */,
+                      ),
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24,
+                      ),
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 2,
+                      borderColor: FlutterFlowTheme.of(context).secondary,
+                      borderWidth: 0,
+                      borderRadius: 12,
+                      margin: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                      hidesUnderline: true,
+                      isOverButton: false,
+                      isSearchable: false,
+                      isMultiSelect: false,
+                    ),
+                  ],
+                ),
+                FlutterFlowCalendar(
+                  color: FlutterFlowTheme.of(context).home,
+                  iconColor: FlutterFlowTheme.of(context).secondaryText,
+                  weekFormat: false,
+                  weekStartsMonday: false,
+                  onChange: (DateTimeRange? newSelectedDate) {
+                    safeSetState(
+                        () => _model.calendarSelectedDay = newSelectedDate);
+                  },
+                  titleStyle: FlutterFlowTheme.of(context).titleLarge.override(
+                        font: GoogleFonts.readexPro(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                      ),
+                  dayOfWeekStyle: FlutterFlowTheme.of(context)
+                      .bodyLarge
+                      .override(
+                        font: GoogleFonts.inter(
+                          fontWeight:
+                              FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                      ),
+                  dateStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                        fontSize: 14,
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                  selectedDateStyle: FlutterFlowTheme.of(context)
+                      .titleSmall
+                      .override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                      ),
+                  inactiveDateStyle: FlutterFlowTheme.of(context)
+                      .labelMedium
+                      .override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
+                        letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
+                  locale: FFLocalizations.of(context).languageCode,
+                ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    // Action 1
+                    await showDialog(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('The trip has been created!'),
+                          content:
+                              Text('The trip was successfully established!'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+
+                    await RidesRecord.collection
+                        .doc()
+                        .set(createRidesRecordData(
+                          pickup: _model.dropDownpickValue,
+                          dropoff: _model.dropDowndropValue,
+                          date: dateTimeFormat(
+                            "d/M/y",
+                            _model.calendarSelectedDay?.start,
+                            locale: FFLocalizations.of(context).languageCode,
+                          ),
+                          time: _model.dropDownstimeValue,
+                          driver: FFAppState().email,
+                          price: 0,
+                        ));
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'ue32zbhk' /* Create Ride */,
+                  ),
+                  options: FFButtonOptions(
+                    height: 40,
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                    iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    color: FlutterFlowTheme.of(context).customColor12,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
+                    elevation: 0,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ].divide(SizedBox(height: 1)).addToStart(SizedBox(height: 8)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
